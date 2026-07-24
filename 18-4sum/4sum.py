@@ -1,17 +1,36 @@
 class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
-        n=len(nums)
-        result=set()
+       n=len(nums)
+       result=[]
+       nums.sort()
+       for i in range(0,n-3):
+         if i>0 and nums[i]==nums[i-1]:
+             continue
+         for j in range(i+1,n-2):
+           if j>i+1 and nums[j]==nums[j-1]:
+             continue
 
-        for i in range(0,n):
-            for j in range(i+1,n):
-                my_set=set()
-                for k in range(j+1,n):
-                    forth =target -(nums[i]+nums[j]+nums[k])
-                    if forth in my_set:
-                        temp=sorted([nums[i],nums[j],nums[k],forth])
-                        result.add(tuple(temp))                   
-                    my_set.add(nums[k])
-        return [list(t) for t in result]                   
+           k=j+1
+           l=n-1
+           while k<l:
+            final=nums[i]+nums[j]+nums[k]+nums[l]
+            if final<target:
+             k=k+1
+            elif final>target:
+             l=l-1
+            else:
+             result.append([nums[i],nums[j],nums[k],nums[l]])
+          
+
+             k=k+1
+             l=l-1
+
+             while k<l and nums[k]==nums[k-1]:
+                k=k+1
+             while k<l and nums[l]==nums[l+1]: 
+                l=l-1   
+       return result                         
+
+
 
         
