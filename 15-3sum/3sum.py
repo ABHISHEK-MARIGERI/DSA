@@ -1,6 +1,6 @@
 class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:
-     result=set()
+     result=[]
      n= len(nums)
      nums.sort()
 
@@ -17,7 +17,7 @@ class Solution:
              k=k-1
           else:
              temp=[nums[i],nums[j],nums[k]]
-             result.add(tuple(temp))
+             result.append(temp)
              j=j+1
              k=k-1
 
@@ -27,5 +27,5 @@ class Solution:
                 k=k-1   
 
 
-     return [list(t) for t in result]       
+     return result     
                      
