@@ -7,14 +7,14 @@
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
 
-        repete=[]
+        repete=set()
         curr=head
        
 
         while curr is not None:
             if curr in repete:
                 return True
-            repete.append(curr)
+            repete.add(curr)
             curr=curr.next
         return False 
         
